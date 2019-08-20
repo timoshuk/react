@@ -1,15 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-const el = (
-  <div>
-    <h1>My Todo List 24</h1>
-    <input placeholder="search" />
+const TodoList = () => {
+  const items = ["Learn React", "Build Awesome App"];
+  return (
     <ul>
-      <li>Learn React</li>
-      <li>Build Awesome App</li>
+      <li>{items[0]}</li>
+      <li>{items[1]}</li>
     </ul>
-  </div>
-);
+  );
+};
 
-ReactDOM.render(el, document.getElementById("root"));
+const AppHeader = () => {
+  return <h1>My Todo List 24</h1>;
+};
+
+const SerchPanel = () => {
+  const searchStyle = {
+    fontSize: "20px"
+  };
+  const searchText = "Type here to search";
+  return <input style={searchStyle} placeholder={searchText} />;
+};
+
+const App = () => {
+  return (
+    <div>
+      <AppHeader />
+      <SerchPanel />
+      <TodoList />
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));
