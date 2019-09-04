@@ -4,6 +4,6 @@ export const inc = () => {
 export const dec = () => {
   return { type: "DEC" };
 };
-export const rnd = payload => {
-  return { type: "RND", payload };
+export const rnd = () => {
+  return { type: "RND", payload: Math.floor(Math.random() * 10) };
 };
