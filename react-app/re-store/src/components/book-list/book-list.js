@@ -7,7 +7,7 @@ class BookList extends Component {
   componentDidMount() {
     const { bookstoreService } = this.props;
     const data = bookstoreService.getBooks();
-    console.log(data);
+    this.props.booksLoaded(data);
   }
   render() {
     const { books } = this.props;
@@ -29,4 +29,17 @@ const mapStateToProps = ({ books }) => {
   return { books };
 };
 
-export default withBookstoreService()(connect(mapStateToProps)(BookList));
+const mapDispatchToProps = dispatch => {
+  return {
+    booksLoaded: newBooks => {
+      dispatch({ type: "BOOKS_LOADED", payload: newBooks });
+    }
+  };
+};
+
+export default withBookstoreService()(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(BookList)
+);
