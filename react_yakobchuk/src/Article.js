@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import Comment from "./Comment";
 import "./Article.css";
 
 export default class Article extends Component {
+  static propTypes = {
+    article: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      text: PropTypes.string
+    }).isRequired
+  };
+
   state = {
     isOpen: false
   };
