@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Comment from './Comment'
+import Comment from "./Comment";
 import "./Article.css";
 
 export default class Article extends Component {
   state = {
-    isOpen: false,
-   
+    isOpen: false
   };
 
   render() {
@@ -32,13 +31,12 @@ export default class Article extends Component {
       return false;
     } else {
       const { article } = this.props;
-    return (
-      <div>
-      <section className="under-l">{article.text}</section>
-      <Comment />
-      </div>);
+      return (
+        <div>
+          <section className="under-l">{article.text}</section>
+          <Comment comments={article.comments} />
+        </div>
+      );
     }
   };
-
-  
 }
