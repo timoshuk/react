@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import Comment from './Comment'
 import "./Article.css";
 
 export default class Article extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
+   
   };
 
   render() {
@@ -30,7 +32,13 @@ export default class Article extends Component {
       return false;
     } else {
       const { article } = this.props;
-      return <section className="under-l">{article.text}</section>;
+    return (
+      <div>
+      <section className="under-l">{article.text}</section>
+      <Comment />
+      </div>);
     }
   };
+
+  
 }
