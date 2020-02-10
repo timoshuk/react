@@ -1,31 +1,24 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 
 import AppHeader from "./components/app-header";
 import SearchPanel from "./components/search-panel";
 import TodoList from "./components/todo-list";
 
-
-
-
-
-
 const App = () => {
-    const isLoggedIn = false;
-    const loginBax = <span>Log in please</span>;
-    const welcomBax = <span>Welcom back!</span>;
+  const todoData = [
+    { label: "Drink Coffy", important: false, id: 1 },
+    { label: "Learn React", important: true, id: 2 },
+    { label: "Have a lanch", important: false, id: 3 }
+  ];
 
-    return (
-        <div>
-            {isLoggedIn ? welcomBax : loginBax}
-            <AppHeader />
-            <SearchPanel />
-            <TodoList />
-
-        </div>
-    )
+  return (
+    <div>
+      <AppHeader />
+      <SearchPanel />
+      <TodoList todos={todoData} />
+    </div>
+  );
 };
 
-
-
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById("root"));
