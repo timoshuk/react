@@ -4,6 +4,12 @@ import './todo-list-item.css';
 
 export default class TodoListItem extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      done: false
+    };
+  }
 
   onLabelClick = () => {
     console.log(`Click ${this.props.label}`);
