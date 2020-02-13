@@ -20,6 +20,8 @@ export default class App extends Component {
     ]
   };
 
+
+
   createTodoItem(label) {
     return {
       label,
@@ -57,13 +59,13 @@ export default class App extends Component {
   };
 
   toggleProperty(arr, id, propName) {
-
     const idx = arr.findIndex(el => {
       return el.id === id;
     });
 
+
     const oldData = arr[idx];
-    const newItem = { oldData, [propName]: !oldData[propName] };
+    const newItem = { ...oldData, [propName]: !oldData[propName] };
     const before = arr.slice(0, idx);
     const after = arr.slice(idx + 1);
 
