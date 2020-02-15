@@ -13,14 +13,11 @@ export default class App extends Component {
 
   state = {
     todoData: [
-      this.createTodoItem('Drink Coffee'),
-      this.createTodoItem('Make Awesome App'),
-      this.createTodoItem('Have a lunch'),
-
+      this.createTodoItem("Drink Coffee"),
+      this.createTodoItem("Make Awesome App"),
+      this.createTodoItem("Have a lunch")
     ]
   };
-
-
 
   createTodoItem(label) {
     return {
@@ -28,8 +25,10 @@ export default class App extends Component {
       important: false,
       done: false,
       id: this.maxId++
-    }
+    };
   }
+
+  filterItems = propName => {};
 
   deleteItem = id => {
     this.setState(({ todoData }) => {
@@ -47,7 +46,7 @@ export default class App extends Component {
   };
 
   addItem = text => {
-    const newItem = this.createTodoItem(text)
+    const newItem = this.createTodoItem(text);
 
     this.setState(({ todoData }) => {
       let arr = [...todoData, newItem];
@@ -63,42 +62,35 @@ export default class App extends Component {
       return el.id === id;
     });
 
-
     const oldData = arr[idx];
     const newItem = { ...oldData, [propName]: !oldData[propName] };
     const before = arr.slice(0, idx);
     const after = arr.slice(idx + 1);
 
-
-    return [...before, newItem, ...after]
-
+    return [...before, newItem, ...after];
   }
 
-
-  onToggleImportant = (id) => {
+  onToggleImportant = id => {
     this.setState(({ todoData }) => {
-
       return {
         todoData: this.toggleProperty(todoData, id, "important")
-      }
+      };
     });
-  }
+  };
 
-
-  onToggleDone = (id) => {
+  onToggleDone = id => {
     this.setState(({ todoData }) => {
       return {
         todoData: this.toggleProperty(todoData, id, "done")
-      }
+      };
     });
-  }
+  };
 
   render() {
     const { todoData } = this.state;
 
-    let doneCount = todoData.filter((el) => el.done).length;
+    let doneCount = todoData.filter(el => el.done).length;
     let todoCount = todoData.length - doneCount;
-
 
     return (
       <div className="todo-app">
@@ -108,7 +100,12 @@ export default class App extends Component {
           <ItemStatusFilter />
         </div>
 
-        <TodoList todos={todoData} onDeleted={this.deleteItem} onToggleImportant={this.onToggleImportant} onToggleDone={this.onToggleDone} />
+        <TodoList
+          todos={todoData}
+          onDeleted={this.deleteItem}
+          onToggleImportant={this.onToggleImportant}
+          onToggleDone={this.onToggleDone}
+        />
         <AddItem addItem={this.addItem} />
       </div>
     );
