@@ -90,7 +90,7 @@ export default class App extends Component {
     this.setState({ filter });
   };
 
-  onFilterChnge = term => {
+  onSearchChnge = term => {
     this.setState({ term });
   };
 
