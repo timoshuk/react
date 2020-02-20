@@ -1,8 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import "./container.css";
 
-const Container =()=>{
-    return (<div className="container">
-        {PaymentResponse.children}
-    </div>)
+export default class Container extends Component {
+  render() {
+    return <div className="container">{this.props.children}</div>;
+  }
 }
