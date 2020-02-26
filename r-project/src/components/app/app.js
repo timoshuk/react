@@ -30,14 +30,11 @@ export default class App extends Component {
       const idx = todoData.findIndex(item => {
         return item.id === id;
       });
-
       const arrStart = todoData.slice(0, idx);
       const change = { ...todoData[idx], finished: !todoData[idx].finished };
       const arrEnd = todoData.slice(idx + 1);
 
-      const r = [...arrStart, change, ...arrEnd];
-
-      return { todoData: r };
+      return { todoData: [...arrStart, change, ...arrEnd] };
     });
   };
 
