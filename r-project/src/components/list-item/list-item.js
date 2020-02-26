@@ -1,11 +1,19 @@
 import React from "react";
 import "./list-item.css";
 
-const ListItem = () => {
+const ListItem = ({ id, data, togleFinished }) => {
+  const { label, important, finished } = data;
+  const clazz = finished ? "list-item-finished" : "";
   return (
     <div>
-      <h2>List title</h2>
-      <p>List some unik text</p>
+      <p
+        className={clazz}
+        onClick={() => {
+          togleFinished(id);
+        }}
+      >
+        {label}
+      </p>
     </div>
   );
 };
