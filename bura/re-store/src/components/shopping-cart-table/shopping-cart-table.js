@@ -45,7 +45,15 @@ const ShoppingCartTable = ({
     <div className="shopping-cart-table">
       <h2>Your Order</h2>
       <table className="table">
-        <thead />
+        <thead>
+          <tr>
+            <td>#</td>
+            <td>Item</td>
+            <td>Count</td>
+            <td>Price</td>
+            <td>Action</td>
+          </tr>
+        </thead>
         <tbody>{items.map(renderRow)}</tbody>
       </table>
 
