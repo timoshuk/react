@@ -9,7 +9,8 @@ class App extends Component {
     this.state = {
       monsters: [],
       searchField: '',
-      title: ""
+      title: "",
+      bool: true
     };
   }
 
@@ -24,12 +25,16 @@ class App extends Component {
   }
 
   render() {
-    const { monsters, searchField, title } = this.state;
+    const { monsters, searchField, title, bool } = this.state;
     const filteredMonsters = monsters.filter(monster => monster.name.toLowerCase().includes(searchField.toLowerCase()));
     return (
       <div className="App">
-        <h1>Monsters Rolodex</h1>
+        {bool ? <h1>Monsters Rolodex</h1> : null}
         <h2>{title}</h2>
+        <div>
+
+          <button onClick={() => { this.setState(state => { return { bool: !state.bool } }) }}>Togle</button>
+        </div>
         <SearchBox placeholder="search monsters" handleChange={this.handleChange} />
         <CardList monsters={filteredMonsters} />
       </div>
