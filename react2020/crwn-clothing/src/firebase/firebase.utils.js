@@ -1,10 +1,10 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
-import myKey from "../my-key";
+import myKey from "../config";
 
 const config = {
-  apiKey: myKey,
+  apiKey: myKey.firebaseKey,
   authDomain: "crwn-db-e8560.firebaseapp.com",
   databaseURL: "https://crwn-db-e8560.firebaseio.com",
   projectId: "crwn-db-e8560",
