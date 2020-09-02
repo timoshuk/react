@@ -86,7 +86,11 @@ class SignUp extends Component {
             label="Confirm Password"
             required
           />
-          <CustomButton type="submit" value="Submit">
+          <CustomButton
+            onClick={this.handleSubmit}
+            type="submit"
+            value="Submit"
+          >
             Sign In
           </CustomButton>
         </form>
