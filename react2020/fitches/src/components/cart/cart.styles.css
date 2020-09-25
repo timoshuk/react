@@ -1,0 +1,13 @@
+.cart {
+  background-color: aqua;
+  width: 22vw;
+  min-height: 150px;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  margin-left: auto;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-align: center;
+  color: brown;
+}
