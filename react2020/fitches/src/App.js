@@ -1,29 +1,26 @@
 import React from "react";
 import styled from "styled-components";
 
-import Cart from "./components/cart/card.component.jsx";
-
 import "./App.css";
 
-const Text = styled.div`
-  color: blue;
-  font-size: 50px;
-  border: ${({ isActive }) =>
-    isActive ? "1px solid black" : "3px dotted green"};
+const Wraper = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 
-const textStyles = {
-  color: "red",
-  fontSize: "24px",
-};
+const MainTitle = styled.h1`
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: black;
+`;
 
 function App() {
   return (
     <div className="App">
-      <Cart>
-        <h1 styles={textStyles}>Header</h1>
-        <Text isActive={false}>Styled text</Text>
-      </Cart>
+      <Wraper>
+        <MainTitle>Main Header</MainTitle>
+      </Wraper>
     </div>
   );
 }
