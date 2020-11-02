@@ -1,19 +1,11 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import CollectionsOverview from "../../collections-overview/collections-overview.component";
-import CollectionPage from "../collection/collection.component";
+import CollectionsOverviewContainer from "../../collections-overview/collections-overview.container";
+import CollectionPageContainer from "../collection/collection.container";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 import "./shop.styles.scss";
 import { fetchCollectionsStartAsync } from "../../../redux/shop/shop.actions";
-import {
-  selectCollectionFetching,
-  selectCollectionsLoaded,
-} from "../../../redux/shop/shop.selectors";
-import WithSpiner from "../../with-spiner/with-spiner.component";
 
-const CollectionsOverviewWithSpinner = WithSpiner(CollectionsOverview);
-const CollectionPageWithSpinner = WithSpiner(CollectionPage);
 
 class ShopPage extends Component {
   componentDidMount() {
@@ -22,38 +14,25 @@ class ShopPage extends Component {
   }
 
   render() {
-    const { match, isCollectionFetching, isCollectionsLoaded } = this.props;
+    const { match } = this.props;
 
     return (
       <div className="shop-page">
         <Route
           exact
           path={`${match.path}`}
-          render={(props) => (
-            <CollectionsOverviewWithSpinner
-              isLoading={isCollectionFetching}
-              {...props}
-            />
-          )}
+        component={CollectionsOverviewContainer}
         />
         <Route
           path={`${match.path}/:collectionId`}
-          render={(props) => (
-            <CollectionPageWithSpinner
-              isLoading={!isCollectionsLoaded}
-              {...props}
-            />
-          )}
+         
+        component={CollectionPageContainer}
         />
       </div>
     );
   }
 }
 
-const mapStateToProps = createStructuredSelector({
-  isCollectionFetching: selectCollectionFetching,
-  isCollectionsLoaded: selectCollectionsLoaded,
-});
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -61,4 +40,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShopPage);
+export default connect(null, mapDispatchToProps)(ShopPage);
